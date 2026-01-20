@@ -5,12 +5,19 @@ public class enemyMgr : MonoBehaviour
 
     public GameObject enemyPrefab;
     public float spawnRange = 9;
-    public int number = 3;
+    public int enemyCount;
+    public int waveNum = 1;
+    public GameObject powerupPrefab;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Update()
     {
-        spawnWave(number);
+        enemyCount = FindObjectsByType<enemy>(FindObjectsSortMode.None).Length;
+        if (enemyCount == 0)
+        {
+            Instantiate(powerupPrefab, generateSpawnPos() + new Vector3(0, 0.5f, 0), powerupPrefab.transform.rotation);
+            spawnWave(waveNum);
+            waveNum++;
+        }
     }
 
     Vector3 generateSpawnPos()
