@@ -9,6 +9,7 @@ TagManager:
   - Powerup
   - Enemy
   - playerGoal
+  - particle
   layers:
   - Default
   - TransparentFX

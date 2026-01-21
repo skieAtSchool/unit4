@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class EnemyX : MonoBehaviour
 {
-    public float speed = 100;
+    public float speed = 2;
     private Rigidbody enemyRb;
     private GameObject playerGoal;
     public Vector3 lookDirection;
+    int waveCnt;
+
 
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = GetComponent<Rigidbody>();
         playerGoal = GameObject.FindGameObjectWithTag("playerGoal");
+        waveCnt = SpawnManagerX.waveCount;
+        speed = waveCnt * .5f + 2;
     }
 
     // Update is called once per frame
